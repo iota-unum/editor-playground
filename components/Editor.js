@@ -8,13 +8,17 @@ function Editor() {
   const [fullHeight, setFullheight] = useState(false)
   useEffect(() => {
     const editor = document.querySelector('.editor-area');
+    const lastChild = editor.lastChild
     const editorWidth = editor.offsetWidth;
     const editorHeight = editor.offsetHeight;
+    const editorTop = editor.offsetTop
+    const lastChildTop = lastChild && lastChild.offsetTop
+    const contentHeight = ( lastChildTop - editorTop) || 0
     const maxHeight = editorWidth * 1.333333;
     const scrollHeight = editor.scrollHeight;
-    console.log(editorWidth, maxHeight, overflow, progress);
+    console.log('contentHEIGHT', contentHeight);
     setOverflow(scrollHeight > maxHeight);
-    setProgress(scrollHeight / maxHeight);
+    setProgress(contentHeight / maxHeight);
     setScrollHeight(scrollHeight)
   }, [content]);
   function handleChange(e) {
@@ -33,7 +37,7 @@ function Editor() {
       <div className='progress-bar'>
 
         <div className="progress-status">
-{Math.ceil(progress*100) + '%  '}
+{Math.trunc(progress*100) + '%  '}
 {overflow && 'spazio esaurito'}
         </div>
       </div>
@@ -60,7 +64,7 @@ function Editor() {
             padding: .2rem;
             width: ${overflow ? '%' : progress*100 + '%'};
             color: white;
-            font-size: 0.7rem;
+            font-size: 0.3;
           }
         `}
       </style>
