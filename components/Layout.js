@@ -9,12 +9,12 @@ function Layout(props) {
 
         @media (min-width: 576px) {
           :root {
-            --containerWidth: 50vw;
+            --containerWidth: 70vw;
           }
         }
         @media (min-width: 768px) {
           :root {
-            --containerWidth: 67vw;
+            --containerWidth: 60vw;
           }
         }
         @media (min-width: 992px) {
@@ -24,7 +24,7 @@ function Layout(props) {
         }
         @media (min-width: 1200px) {
           :root {
-            --containerWidth: 50vw;
+            --containerWidth: 40vw;
           }
         }
       `}</style>

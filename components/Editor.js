@@ -37,8 +37,8 @@ function Editor() {
       <div className='progress-bar'>
 
         <div className="progress-status">
-{Math.trunc(progress*100) + '%  '}
-{overflow && 'spazio esaurito'}
+{}
+{overflow ? 'spazio esaurito' :Math.trunc(progress*100) + '%  '}
         </div>
       </div>
       <style jsx global>
