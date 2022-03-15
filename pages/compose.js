@@ -6,7 +6,16 @@ function compose() {
     <div className='.compose'>
 <AppBar/>
 <Editor/>
-
+<style jsx>
+  {`
+  
+  .compose {
+    background-color: blue;
+    height: 100vh;
+  }
+  
+  `}
+</style>
     </div>
   )
 }

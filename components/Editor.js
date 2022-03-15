@@ -54,6 +54,7 @@ function Editor() {
             background-color: gold;
             border: ${overflow && '5px solid red'};
             overflow: auto;
+            padding: .5rem;
           }
           .progress-bar {
             height: 30px;
