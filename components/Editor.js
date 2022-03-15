@@ -55,6 +55,7 @@ function Editor() {
             border: ${overflow && '5px solid red'};
             overflow: auto;
             padding: .5rem;
+            font-size: calc(var(--containerWidth/20)) ;
           }
           .progress-bar {
             height: 30px;

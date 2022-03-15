@@ -3,33 +3,10 @@ function Layout(props) {
     <div className='page-layout'>
       {props.children}
       <style jsx global>{`
-      .page-layout {
-        background-color: steelblue;
-        height: 100vh;
-      }
-        :root {
-          --containerWidth: 90vw;
-        }
-
-        @media (min-width: 576px) {
-          :root {
-            --containerWidth: 70vw;
-          }
-        }
-        @media (min-width: 768px) {
-          :root {
-            --containerWidth: 60vw;
-          }
-        }
-        @media (min-width: 992px) {
-          :root {
-            --containerWidth: 50vw;
-          }
-        }
-        @media (min-width: 1200px) {
-          :root {
-            --containerWidth: 40vw;
-          }
+        .page-layout {
+          background-color: steelblue;
+          height: 100%;
+        
         }
       `}</style>
     </div>

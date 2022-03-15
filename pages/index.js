@@ -33,6 +33,7 @@ const width = container.offsetWidth
         justify-content: center;
         width: var(--containerWidth);
         height: 100vh;
+        
       }
 a {
   display: block;
