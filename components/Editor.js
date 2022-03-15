@@ -12,18 +12,19 @@ function Editor() {
     const editorWidth = editor.offsetWidth;
     const editorHeight = editor.offsetHeight;
     const editorTop = editor.offsetTop
-    const lastChildTop = lastChild && lastChild.offsetTop
+    const lastChildTop = lastChild && lastChild.offsetTop + lastChild.offsetHeight
     const contentHeight = ( lastChildTop - editorTop) || 0
     const maxHeight = editorWidth * 1.333333;
     const scrollHeight = editor.scrollHeight;
-    console.log('contentHEIGHT', contentHeight);
+    console.log('contentHEIGHT', content);
     setOverflow(scrollHeight > maxHeight);
     setProgress(contentHeight / maxHeight);
     setScrollHeight(scrollHeight)
-  }, [content]);
+  }, [content, progress, overflow, scrollHeight]);
   function handleChange(e) {
     const newContent = e.currentTarget.innerHTML;
-    setContent(newContent);
+   
+    setContent(newContent );
   }
   return (
     <div className='editor'>
@@ -32,13 +33,13 @@ function Editor() {
       
       >full height</button>
       <div className='editor-area' contentEditable onInput={handleChange}>
-        Editor
+        {content === ''? <div></div> : <div></div>}
       </div>
       <div className='progress-bar'>
 
         <div className="progress-status">
 {}
-{overflow ? 'spazio esaurito' :Math.trunc(progress*100) + '%  '}
+{overflow ? 'spazio esaurito' : Math.trunc(progress*100) + '%  '}
         </div>
       </div>
       <style jsx global>
@@ -50,11 +51,12 @@ function Editor() {
           .editor-area {
             min-height: calc(var(--containerWidth) * 0.5625);
             max-height: ${fullHeight ? `calc(var(--containerWidth) * 1.333333)` : `calc(var(--containerWidth) * 0.5625)`};
-            background-color: ${overflow ? 'red' : 'gold'};
+            background-color: gold;
+            border: ${overflow && '5px solid red'};
             overflow: auto;
           }
           .progress-bar {
-            
+            height: 30px;
             background-color: gold;
             width: 100%;
           }
@@ -62,7 +64,8 @@ function Editor() {
             background-color: red;
             height: 100%;
             padding: .2rem;
-            width: ${overflow ? '%' : progress*100 + '%'};
+            display: ${progress < 0 ? 'none' : 'block'};
+            width: ${overflow ? '100%'  : progress*100 + '%' };
             color: white;
             font-size: 0.3;
           }
