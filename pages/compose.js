@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect} from 'react';
 import AppBar from '../components/AppBar';
 import ProgressBar from '../components/ProgressBar';
 import Editor from '../components/Editor';
@@ -16,6 +16,12 @@ function Compose() {
     console.log(content);
     setContent(newContent);
   }
+  
+
+useEffect(()=>{
+  navigator.virtualKeyboard.overlaysContent = true;
+  console.log('navigator', navigator)
+})
 
   return (
     <div className='compose'>
