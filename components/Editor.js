@@ -1,26 +1,11 @@
 import React, { useRef, useEffect, useState } from 'react';
 import useStore from '../store';
+import useDimensions from '../hooks/useDimensions';
 function Editor() {
   const [content, setContent] = useState('');
-  const [overflow, setOverflow] = useState(false);
-  const [scrollHeight, setScrollHeight] = useState(0);
-  const [progress, setProgress] = useState(0);
   const [fullHeight, setFullheight] = useState(false)
-  useEffect(() => {
-    const editor = document.querySelector('.editor-area');
-    const lastChild = editor.lastChild
-    const editorWidth = editor.offsetWidth;
-    const editorHeight = editor.offsetHeight;
-    const editorTop = editor.offsetTop
-    const lastChildTop = lastChild && lastChild.offsetTop + lastChild.offsetHeight
-    const contentHeight = ( lastChildTop - editorTop) || 0
-    const maxHeight = editorWidth * 1.333333;
-    const scrollHeight = editor.scrollHeight;
-    console.log('contentHEIGHT', content);
-    setOverflow(scrollHeight > maxHeight);
-    setProgress(contentHeight / maxHeight);
-    setScrollHeight(scrollHeight)
-  }, [content, progress, overflow, scrollHeight]);
+const {overflow, progress} = useDimensions(content)
+  
   function handleChange(e) {
     const newContent = e.currentTarget.innerHTML;
    
@@ -67,7 +52,7 @@ function Editor() {
             height: 100%;
             padding: .2rem;
             display: ${progress < 0 ? 'none' : 'block'};
-            width: ${overflow ? '100%'  : progress*100 + '%' };
+            width: ${progress > 1 ? '100%'  : progress*100 + '%' };
             color: white;
             font-size: 0.3;
           }
