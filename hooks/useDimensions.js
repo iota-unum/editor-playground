@@ -1,8 +1,8 @@
 import {useState, useEffect} from 'react'
-
+import useStore from '../store';
 export default function useDimensions(content) {
 
-    const [overflow, setOverflow] = useState(false);
+    const {overflow, setOverflow} = useStore();
     const [scrollHeight, setScrollHeight] = useState(0);
     const [progress, setProgress] = useState(0);
 
