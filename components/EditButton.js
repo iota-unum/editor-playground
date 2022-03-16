@@ -3,11 +3,11 @@ import useStore from '../store';
 function EditButton({cmd, arg, name}) {
 
 const {commandState, setCommandState} = useStore()
-const colorBtn = commandState[cmd]  ? 'white' : 'red'
+const statusClass = commandState[cmd]  ? 'active' : 'disabled'
 
 return (
-  <div
-  className='edit-button'
+  <button
+  className={`edit-button ${statusClass}`}
   onMouseDown={evt => {
     evt.preventDefault(); // Avoids loosing focus from the editable area
     document.execCommand(cmd, false, arg); // Send the command to the browser
@@ -23,14 +23,24 @@ return (
 
       {`
 .edit-button{
+  display: block;
+  width: 7rem;
+  padding: 0.5rem;
+  flex-grow:1;
 
-      color: ${colorBtn};
+}
 
+.active {
+  color: red;
+}
+
+.disabled {
+  color: green;
 }
       `}
     </style>
     
-    </div>
+    </button>
   )
 }
 
