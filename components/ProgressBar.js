@@ -12,7 +12,7 @@ function ProgressBar({progress, overflow}) {
         {`
         .progress-bar {
             height: 30px;
-            background-color: rgb(7, 181, 91);
+            background-color: green;
             width: 100%;
           }
           .progress-status {

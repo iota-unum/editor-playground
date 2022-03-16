@@ -1,9 +1,10 @@
-import React , {useState} from 'react';
+import React, { useState } from 'react';
 import AppBar from '../components/AppBar';
 import ProgressBar from '../components/ProgressBar';
 import Editor from '../components/Editor';
 import useDimensions from '../hooks/useDimensions';
 import useStore from '../store';
+import EditBar from '../components/EditBar';
 function Compose() {
   const [content, setContent] = useState('');
   const { overflow, progress } = useDimensions(content);
@@ -25,19 +26,12 @@ function Compose() {
         preview={preview}
         content={content}
       />
-{
+      {!preview && <ProgressBar overflow={overflow} progress={progress} />}
 
-      !preview && <ProgressBar overflow={overflow} progress={progress} />
-      
+      {!preview && <EditBar />}
 
-}
-{preview 
-
-&&
-<button>Done</button>
-
-}
-<style jsx>
+      {preview && <button>Done</button>}
+      <style jsx>
         {`
           .compose {
             background-color: steelblue;
@@ -47,12 +41,14 @@ function Compose() {
           }
           button {
             display: block;
-            margin: 0 auto;
-            margin-top: .7rem;
             background-color: gold;
-            color: white;
-            padding: .5rem 3rem;
-            border-radius: .5rem;
+            border: 3px solid gold;
+            border-radius: 1.5rem;
+            margin: 1rem auto;
+            color: steelblue;
+            width: 9rem;
+            padding: 0.5rem 0.7rem;
+            font-weight: bolder;
           }
         `}
       </style>

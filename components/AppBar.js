@@ -1,12 +1,14 @@
 import React from 'react';
 import useStore from '../store';
+import Avatar from './Avatar';
 function AppBar() {
 
   const { preview, setPreview } = useStore();
   return (
     <div className='appbar'>
-      AppBar
-      <button onClick={setPreview}>{preview ? 'edit' : 'preview'}</button>
+
+      <Avatar/>
+      <button onClick={setPreview}>{preview ? 'back' : 'preview'}</button>
 
 
       <style jsx>
@@ -18,9 +20,14 @@ function AppBar() {
           align-items: center;
         }
         button {
-          background-color: green;
-          border-radius: 1rem;
-          height: 30px;
+          background-color: transparent;
+          border: 3px solid gold;
+          border-radius: 1.5rem;
+          margin: 0 10px;
+          color: gold;
+          width: 5rem;
+          padding: .5rem .7rem;
+          font-weight: bolder;
         }
         `}
       </style>
