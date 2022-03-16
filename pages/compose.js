@@ -4,7 +4,7 @@ import ProgressBar from '../components/ProgressBar';
 import Editor from '../components/Editor';
 import useDimensions from '../hooks/useDimensions';
 import useStore from '../store';
-function compose() {
+function Compose() {
   const [content, setContent] = useState('');
   const { overflow, progress } = useDimensions(content);
   const preview = useStore((state) => state.preview);
@@ -45,4 +45,4 @@ function compose() {
   );
 }
 
-export default compose;
+export default Compose;
