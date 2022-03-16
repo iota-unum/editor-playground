@@ -2,17 +2,18 @@ import React from 'react'
 import useStore from '../store';
 function EditButton({cmd, arg, name}) {
 
-const commandState = useStore(state => state.commandState)
-const colorBtn = commandState[cmd] === 'true' ? 'white' : 'red'
+const {commandState, setCommandState} = useStore()
+const colorBtn = commandState[cmd]  ? 'white' : 'red'
 
 return (
   <div
   className='edit-button'
-  onClick={()=>{}}
   onMouseDown={evt => {
     evt.preventDefault(); // Avoids loosing focus from the editable area
     document.execCommand(cmd, false, arg); // Send the command to the browser
+    setCommandState({...commandState, [cmd]: !commandState[cmd]})
     console.log('commando', commandState[cmd]);
+    console.log(commandState)
       }}
     
     >{name ?? cmd}

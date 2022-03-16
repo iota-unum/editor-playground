@@ -4,11 +4,11 @@ function Editor({ handleChange, content, overflow, progress, preview }) {
   const { commandState, setCommandState } = useStore();
   function handleSelect() {
     const selectState = {};
-    const newState = ['bold', 'italic', 'formatBlock'].map((btn) => {
-      selectState[btn] = document.queryCommandValue(btn);
+   ['bold', 'italic', 'formatBlock'].map((btn) => {
+      selectState[btn] = document.queryCommandState(btn);
     });
-    console.log('selectState', selectState);
-    setCommandState(prev => selectState)
+    // console.log('selectState', selectState);
+    setCommandState(selectState)
     console.log('commandState', commandState)
     return selectState;
   }
