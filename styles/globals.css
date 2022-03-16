@@ -27,7 +27,7 @@
 
 
 :root {
-  --containerWidth: 90vw;
+  --containerWidth: 100vw;
 }
 
 @media (min-width: 576px) {

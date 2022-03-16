@@ -21,7 +21,7 @@ function Editor({ handleChange, content, overflow, progress, preview }) {
             border: ${overflow && '5px solid red'};
             overflow: auto;
             padding: 0.5rem;
-            font-size: .65rem;
+            font-size: .75rem;
           }
         `}
       </style>
