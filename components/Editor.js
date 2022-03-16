@@ -1,7 +1,7 @@
 import ProgressBar from './ProgressBar';
 import useStore from '../store';
 function Editor({ handleChange, content, overflow, progress, preview }) {
-  const { commandState, setCommandState } = useStore();
+  const {fontSize, commandState, setCommandState } = useStore();
   function handleSelect() {
     const selectState = {};
    ['bold', 'italic', 'formatBlock'].map((btn) => {
@@ -34,7 +34,7 @@ function Editor({ handleChange, content, overflow, progress, preview }) {
             border: ${overflow && '5px solid red'};
             overflow: auto;
             padding: 0.5rem;
-            font-size: 0.75rem;
+            font-size: ${fontSize}rem;
           }
         `}
       </style>

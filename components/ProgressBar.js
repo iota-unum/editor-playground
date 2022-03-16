@@ -1,12 +1,13 @@
 import React from 'react'
-
-function ProgressBar({progress, overflow}) {
+import useStore from '../store'
+function ProgressBar({progress}) {
+  const {overflow, fontSize}= useStore()
   return (
     <div className='progress-bar'>
 
     <div className="progress-status">
 {}
-{overflow ? 'spazio esaurito' : (progress*100).toFixed(0) + '%  '}
+{overflow && fontSize <= 0.75? 'spazio esaurito, raggiunto il carattere più piccolo possibile' : (progress*100).toFixed(0) + '%  '}
     </div>
     <style jsx>
         {`
@@ -22,7 +23,7 @@ function ProgressBar({progress, overflow}) {
             display: ${progress < 0 ? 'none' : 'block'};
             width: ${progress > 1 ? '100%' : progress * 100 + '%'};
             color: white;
-            font-size: 0.3;
+            font-size: 0.8rem;
           }
         `}
     </style>
