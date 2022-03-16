@@ -28,16 +28,31 @@ function Compose() {
 {
 
       !preview && <ProgressBar overflow={overflow} progress={progress} />
+      
 
 }
+{preview 
 
-      <style jsx>
+&&
+<button>Done</button>
+
+}
+<style jsx>
         {`
           .compose {
             background-color: steelblue;
             height: 100%;
             width: var(--containerWidth);
             margin: 0 auto;
+          }
+          button {
+            display: block;
+            margin: 0 auto;
+            margin-top: .7rem;
+            background-color: gold;
+            color: white;
+            padding: .5rem 3rem;
+            border-radius: .5rem;
           }
         `}
       </style>
