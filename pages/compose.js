@@ -19,8 +19,14 @@ function Compose() {
   
 
 useEffect(()=>{
-  navigator?.virtualKeyboard?.overlaysContent = true;
-})
+  if(navigator && navigator.virtualKeyboard) {
+
+    navigator.virtualKeyboard.overlaysContent = true;
+
+  } else {
+    return
+  }
+}, [])
 
   return (
     <div className='compose'>
