@@ -19,7 +19,7 @@ function Compose() {
   
 
 useEffect(()=>{
-  navigator.virtualKeyboard.overlaysContent = true;
+  navigator?.virtualKeyboard?.overlaysContent = true;
 })
 
   return (
