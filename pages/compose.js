@@ -8,9 +8,8 @@ import EditBar from '../components/EditBar';
 import Head from 'next/head'
 
 function Compose() {
-  const overflow = useStore(state => state.overlfow)
   const [content, setContent] = useState('');
-  const {  progress } = useDimensions(content);
+  const { overflow, progress } = useDimensions(content);
   const preview = useStore((state) => state.preview);
   function handleChange(e) {
     const newContent = e.currentTarget.innerHTML;
@@ -22,7 +21,7 @@ function Compose() {
 useEffect(()=>{
   if(navigator && navigator.virtualKeyboard) {
 
-    navigator.virtualKeyboard?.overlaysContent = true;
+    navigator.virtualKeyboard.overlaysContent = true;
 
   } else {
     return
