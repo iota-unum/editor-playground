@@ -1,9 +1,14 @@
-import React from 'react'
-
+import React from 'react';
+import useStore from '../store';
 function AppBar() {
+
+  const {  setPreview } = useStore();
   return (
-    <div>AppBar</div>
-  )
+    <div>
+      AppBar
+      <button onClick={setPreview}>full height</button>
+    </div>
+  );
 }
 
-export default AppBar
+export default AppBar;
