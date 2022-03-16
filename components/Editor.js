@@ -1,26 +1,18 @@
-import React, { useRef, useEffect, useState } from 'react';
-import useStore from '../store';
-import useDimensions from '../hooks/useDimensions';
 import ProgressBar from './ProgressBar';
-function Editor() {
-  const [content, setContent] = useState('');
-  const { overflow, progress } = useDimensions(content);
-  const preview = useStore((state) => state.preview);
-  console.log(preview)
-  function handleChange(e) {
-    const newContent = e.currentTarget.innerHTML;
-
-    setContent(newContent);
-  }
+function Editor({ handleChange, content, overflow, progress, preview }) {
   return (
-    <div className='editor'>
-      <div className='editor-area' contentEditable={true} onInput={handleChange} suppressContentEditableWarning={true}>
-        {content === '' ? <div></div> : <div></div>}
-      </div>
-      <ProgressBar overflow={overflow} progress={progress} />
+    <div
+      className='editor'
+      contentEditable={!preview}
+      onInput={handleChange}
+      suppressContentEditableWarning={true}
+      value={content}
+    >
+      {content === '' ? <div></div> : <div></div>}
+
       <style jsx global>
         {`
-          .editor-area {
+          .editor{
             min-height: calc(var(--containerWidth) * 0.5625);
             max-height: ${preview
               ? `calc(var(--containerWidth) * 1.333333)`
@@ -29,7 +21,7 @@ function Editor() {
             border: ${overflow && '5px solid red'};
             overflow: auto;
             padding: 0.5rem;
-            font-size: calc(var(--containerWidth/20));
+            font-size: .65rem;
           }
         `}
       </style>

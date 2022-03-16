@@ -8,7 +8,7 @@ export default function useDimensions(content) {
 
 
 useEffect(() => {
-    const editor = document.querySelector('.editor-area');
+    const editor = document.querySelector('.editor');
     const lastChild = editor.lastChild
     const editorWidth = editor.offsetWidth;
     const editorHeight = editor.offsetHeight;

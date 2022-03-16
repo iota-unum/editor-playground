@@ -4,7 +4,7 @@ const useStore = create((set) => ({
 
 containerWidth: '100%',
 height: 0,
-preview: true,
+preview: false,
 setWidth: width => set({containerWidth: width}),
 setPreview:()=> set(state => ({preview: !state.preview})),
 
