@@ -5,6 +5,8 @@ import Editor from '../components/Editor';
 import useDimensions from '../hooks/useDimensions';
 import useStore from '../store';
 import EditBar from '../components/EditBar';
+import Head from 'next/head'
+
 function Compose() {
   const [content, setContent] = useState('');
   const { overflow, progress } = useDimensions(content);
@@ -17,6 +19,11 @@ function Compose() {
 
   return (
     <div className='compose'>
+      <Head>
+
+      <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+
+      </Head>
       <AppBar />
 
       <Editor
@@ -36,6 +43,7 @@ function Compose() {
           .compose {
             background-color: steelblue;
             height: 100%;
+            min-height: 100vh;
             width: var(--containerWidth);
             margin: 0 auto;
           }
