@@ -22,7 +22,7 @@ function Compose() {
 useEffect(()=>{
   if(navigator && navigator.virtualKeyboard) {
 
-    navigator.virtualKeyboard?.overlaysContent = true;
+    navigator.virtualKeyboard.overlaysContent = true;
 
   } else {
     return
