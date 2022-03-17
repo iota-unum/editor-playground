@@ -2,6 +2,12 @@ import ProgressBar from './ProgressBar';
 import useStore from '../store';
 function Editor({ handleChange, content, overflow, progress, preview }) {
   const {fontSize, commandState, setCommandState } = useStore();
+  function handlePaste(e){
+    e.preventDefault()
+
+  const text = e.clipboardData.getData('text/plain')
+  document.execCommand('insertHTML', false, text)
+  }
   function handleSelect() {
     const selectState = {};
    ['bold', 'italic', 'formatBlock'].map((btn) => {
@@ -20,6 +26,7 @@ function Editor({ handleChange, content, overflow, progress, preview }) {
       suppressContentEditableWarning={true}
       // value={content}
       onSelect={handleSelect}
+      onPaste={handlePaste}
     >
       {content === '' ? <div></div> : <div></div>}
 
