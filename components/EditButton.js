@@ -1,7 +1,7 @@
 import React from 'react'
 import useStore from '../store';
 
-function EditButton({cmd, arg, name}) {
+function EditButton({cmd, arg, name, children}) {
 
 const {commandState, setCommandState} = useStore()
 const statusClass = commandState[name]  ? 'active' : 'disabled'
@@ -29,7 +29,7 @@ setCommandState(selectState)
     console.log(commandState)
   }}
   
-    >{name ?? cmd}
+    >{children}
     
     <style jsx>
 
