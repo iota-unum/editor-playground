@@ -51,7 +51,6 @@ console.log('CommandSTATE' , commandState)
               ? `calc(var(--containerWidth) * 1.333333)`
               : `calc(var(--containerWidth) * 0.5625)`};
             background-color: gold;
-            border: ${overflow && '5px solid red'};
             overflow: auto;
             padding: 0.5rem;
             font-size: ${fontSize}rem;

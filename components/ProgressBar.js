@@ -12,12 +12,12 @@ function ProgressBar({progress}) {
     <style jsx>
         {`
         .progress-bar {
-            height: 30px;
-            background-color: green;
+            height: 20px;
+            background-color: steelblue;
             width: 100%;
           }
           .progress-status {
-            background-color: red;
+            background-color: orangered;
             height: 100%;
             padding: 0.2rem;
             display: ${progress < 0 ? 'none' : 'block'};

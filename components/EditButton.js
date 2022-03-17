@@ -40,15 +40,17 @@ setCommandState(selectState)
   width: 7rem;
   padding: 0.5rem;
   flex-grow:1;
+  background-color: steelblue;
+  border: 1px solid white;
+  color: white;
 
 }
 
 .active {
-  color: red;
+  color: gold;
 }
 
 .disabled {
-  color: green;
 }
       `}
     </style>
