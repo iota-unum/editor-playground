@@ -22,8 +22,8 @@ function EditBar() {
         </EditButton>
       ) : (
         <EditButton cmd='formatBlock' arg='h1' name='heading' >
-          
           <FaHeading/>
+          
            </EditButton>
       )}
 
@@ -47,6 +47,7 @@ function EditBar() {
           .editbar {
             display: flex;
             justify-content: space-around;
+            padding-top: 5px;
           }
         `}
       </style>

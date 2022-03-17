@@ -1,40 +1,38 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import AppBar from '../components/AppBar';
 import ProgressBar from '../components/ProgressBar';
 import Editor from '../components/Editor';
 import useDimensions from '../hooks/useDimensions';
 import useStore from '../store';
 import EditBar from '../components/EditBar';
-import Head from 'next/head'
+import Head from 'next/head';
 
 function Compose() {
-  const overflow = useStore(state => state.overlfow)
+  const overflow = useStore((state) => state.overlfow);
   const [content, setContent] = useState('');
-  const {  progress } = useDimensions(content);
+  const { progress } = useDimensions(content);
   const preview = useStore((state) => state.preview);
   function handleChange(e) {
     const newContent = e.currentTarget.innerHTML;
     console.log(content);
     setContent(newContent);
   }
-  
 
-useEffect(()=>{
-  if(navigator && navigator.virtualKeyboard) {
-
-    navigator.virtualKeyboard.overlaysContent = true;
-
-  } else {
-    return
-  }
-}, [])
+  useEffect(() => {
+    if (navigator && navigator.virtualKeyboard) {
+      navigator.virtualKeyboard.overlaysContent = true;
+    } else {
+      return;
+    }
+  }, []);
 
   return (
     <div className='compose'>
       <Head>
-
-      <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"/>
-
+        <meta
+          content='width=device-width, initial-scale=1, shrink-to-fit=no'
+          name='viewport'
+        />
       </Head>
       <AppBar />
       {!preview && <EditBar />}
@@ -47,7 +45,6 @@ useEffect(()=>{
         content={content}
       />
       {!preview && <ProgressBar overflow={overflow} progress={progress} />}
-
 
       {preview && <button>Done</button>}
       <style jsx>
