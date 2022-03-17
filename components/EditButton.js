@@ -1,5 +1,6 @@
 import React from 'react'
 import useStore from '../store';
+
 function EditButton({cmd, arg, name}) {
 
 const {commandState, setCommandState} = useStore()
@@ -10,11 +11,20 @@ return (
   className={`edit-button ${statusClass}`}
   onMouseDown={evt => {
     evt.preventDefault(); // Avoids loosing focus from the editable area
-
-    if(name === '')
-    setCommandState(prev => ({...prev.commandState, [name]: !prev.commandState.name}))
-    // setCommandState({...commandState, heading: !commandState.text, left: !commandState.center})
     document.execCommand(cmd, false, arg); // Send the command to the browser
+//     const newCommandState = {...commandState, [name]: !commandState[name], left:!commandState.center, center: !commandState.left}
+const selectState = {
+  bold: document.queryCommandState('bold'),
+  italic: document.queryCommandState('italic'),
+  heading: document.queryCommandValue('formatBlock' ) === 'h1',
+  text: document.queryCommandValue('formatBlock' ) === 'div',
+  center: document.queryCommandState('justifyCenter'),
+  left: document.queryCommandState('justifyLeft'),
+
+}
+setCommandState(selectState)
+    // setCommandState(prev => ({...commandState, [name]: !commandState.name}))
+    // setCommandState({...commandState, heading: !commandState.text, left: !commandState.center})
     console.log('commando', commandState[name]);
     console.log(commandState)
   }}

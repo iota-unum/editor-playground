@@ -9,8 +9,8 @@ function handleSelect () {
 const selectState = {
   bold: document.queryCommandState('bold'),
   italic: document.queryCommandState('italic'),
-  heading: document.queryCommandValue('formatBlock' ) == 'h1',
-  text: document.queryCommandValue('formatBlock' ) == 'div',
+  heading: document.queryCommandValue('formatBlock' ) === 'h1',
+  text: document.queryCommandValue('formatBlock' ) === 'div',
   center: document.queryCommandState('justifyCenter'),
   left: document.queryCommandState('justifyLeft'),
 
