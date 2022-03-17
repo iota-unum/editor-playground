@@ -12,18 +12,17 @@ function ProgressBar({progress}) {
     <style jsx>
         {`
         .progress-bar {
-            height: 20px;
-            background-color: steelblue;
+            height: 1.5rem;
             width: 100%;
           }
           .progress-status {
-            background-color: orangered;
+            background-color: ${overflow && fontSize <= 0.75 ? 'orangered': "white"};
             height: 100%;
             padding: 0.2rem;
             display: ${progress < 0 ? 'none' : 'block'};
             width: ${progress > 1 ? '100%' : progress * 100 + '%'};
-            color: white;
-            font-size: 0.8rem;
+            color: ${overflow && fontSize <= 0.75 ? 'white': "steelblue"};            font-size: 0.8rem;
+            font-weight: bolder;
           }
         `}
     </style>
