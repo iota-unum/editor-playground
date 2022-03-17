@@ -7,10 +7,12 @@ function EditBar() {
  
   return (
     <div className='editbar'>
-      <EditButton cmd='bold' />
-      <EditButton cmd='italic' />
+      <EditButton cmd='bold' name='bold'/>
+      <EditButton cmd='italic' name='italic'/>
       <EditButton cmd='formatBlock' arg='h1'name='heading'/>
       <EditButton cmd='formatBlock' arg='div' name='text'/>
+      <EditButton cmd='justifyCenter'  name='center'/>
+      <EditButton cmd='justifyLeft' name='left'/>
 
       <style jsx>
         {`

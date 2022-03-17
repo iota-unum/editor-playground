@@ -2,22 +2,36 @@ import ProgressBar from './ProgressBar';
 import useStore from '../store';
 function Editor({ handleChange, content, overflow, progress, preview }) {
   const {fontSize, commandState, setCommandState } = useStore();
-  function handlePaste(e){
-    e.preventDefault()
 
-  const text = e.clipboardData.getData('text/plain')
-  document.execCommand('insertHTML', false, text)
-  }
-  function handleSelect() {
-    const selectState = {};
-   ['bold', 'italic', 'formatBlock'].map((btn) => {
-      selectState[btn] = document.queryCommandState(btn);
-    });
-    // console.log('selectState', selectState);
-    setCommandState(selectState)
-    console.log('commandState', commandState)
-    return selectState;
-  }
+
+function handleSelect () {
+
+const selectState = {
+  bold: document.queryCommandState('bold'),
+  italic: document.queryCommandState('italic'),
+  heading: document.queryCommandValue('formatBlock' ) == 'h1',
+  text: document.queryCommandValue('formatBlock' ) == 'div',
+  center: document.queryCommandState('justifyCenter'),
+  left: document.queryCommandState('justifyLeft'),
+
+}
+console.log('bold',  document.queryCommandState('bold'))
+console.log('qmvl', document.queryCommandValue('formatBlock'))
+setCommandState(selectState)
+console.log('CommandSTATE' , commandState)
+}
+
+
+  // function handleSelect() {
+  //   const selectState = {};
+  //  ['bold', 'italic', 'formatBlock'].map((btn) => {
+  //     selectState[btn] = document.queryCommandState(btn);
+  //   });
+  //   // console.log('selectState', selectState);
+  //   setCommandState(selectState)
+  //   console.log('commandState', commandState)
+  //   return selectState;
+  // }
   return (
     <div
       className='editor'
@@ -26,7 +40,6 @@ function Editor({ handleChange, content, overflow, progress, preview }) {
       suppressContentEditableWarning={true}
       // value={content}
       onSelect={handleSelect}
-      onPaste={handlePaste}
     >
       {content === '' ? <div></div> : <div></div>}
 

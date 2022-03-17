@@ -3,19 +3,22 @@ import useStore from '../store';
 function EditButton({cmd, arg, name}) {
 
 const {commandState, setCommandState} = useStore()
-const statusClass = commandState[cmd]  ? 'active' : 'disabled'
+const statusClass = commandState[name]  ? 'active' : 'disabled'
 
 return (
   <button
   className={`edit-button ${statusClass}`}
   onMouseDown={evt => {
     evt.preventDefault(); // Avoids loosing focus from the editable area
+
+    if(name === '')
+    setCommandState(prev => ({...prev.commandState, [name]: !prev.commandState.name}))
+    // setCommandState({...commandState, heading: !commandState.text, left: !commandState.center})
     document.execCommand(cmd, false, arg); // Send the command to the browser
-    setCommandState({...commandState, [cmd]: !commandState[cmd]})
-    console.log('commando', commandState[cmd]);
+    console.log('commando', commandState[name]);
     console.log(commandState)
-      }}
-    
+  }}
+  
     >{name ?? cmd}
     
     <style jsx>
