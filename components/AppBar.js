@@ -14,10 +14,12 @@ function AppBar() {
       <style jsx>
         {`
         .appbar {
-          height: 7vh;
+          height: 9vh;
+          width: var(--containerWidth);
           display: flex;
           justify-content: space-between;
           align-items: center;
+          padding: 1rem .5rem;
         }
         button {
           background-color: transparent;
