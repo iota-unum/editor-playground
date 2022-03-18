@@ -25,7 +25,7 @@ function ColorBar({}) {
           .colorbar {
             height: 2.5rem;
             width: 100%;
-            background-color: rgb(38, 92, 137);
+            background-color: #273340;
             display: flex;
             justify-content: space-between;
           }

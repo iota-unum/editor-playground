@@ -45,8 +45,8 @@ function Compose() {
         preview={preview}
         content={content}
       />
-      {!preview && <ProgressBar overflow={overflow} progress={progress} />}
       {!preview && <ColorBar />}
+      {!preview && <ProgressBar overflow={overflow} progress={progress} />}
       {preview && <button>Done</button>}
       <style jsx>
         {`

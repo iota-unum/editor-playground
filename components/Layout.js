@@ -16,7 +16,7 @@ function Layout(props) {
         }
         .page-layout {
           height: 100%;
-        
+        outline:none;
         }
       `}</style>
     </div>

@@ -40,7 +40,7 @@ function Editor({ handleChange, content, overflow, progress, preview }) {
         {`
           .editor {
             font-weight: 400;
-
+outline: none;
             min-height: calc(var(--containerWidth) * 0.5625);
             max-height: ${preview
               ? `calc(var(--containerWidth) * 1.333333)`
