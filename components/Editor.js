@@ -1,9 +1,21 @@
+import {useEffect, useRef} from 'react'
 import ProgressBar from './ProgressBar';
 import useStore from '../store';
+import {positionCursorToEnd} from '../helpers/cursorfunction'
 function Editor({ handleChange, content, overflow, progress, preview }) {
-  const { fontColor, fontSize, commandState, setCommandState } = useStore();
+  const { selectedColor, fontColor, fontSize, commandState, setCommandState } = useStore();
+
+
+  const refEditor = useRef()
+
+useEffect(()=> {
+  const el = document.querySelector('.editor');  
+  positionCursorToEnd(el)
+
+}, [fontColor, selectedColor, preview])
 
   function handleSelect() {
+
     const selectState = {
       bold: document.queryCommandState('bold'),
       italic: document.queryCommandState('italic'),
@@ -26,7 +38,10 @@ function Editor({ handleChange, content, overflow, progress, preview }) {
 
   return (
     <div
+
+    ref={refEditor}
       className='editor'
+      spellCheck={!preview}
       contentEditable={!preview}
       onInput={handleChange}
       suppressContentEditableWarning={true}
