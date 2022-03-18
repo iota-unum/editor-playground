@@ -46,6 +46,8 @@ console.log('CommandSTATE' , commandState)
       <style jsx global>
         {`
           .editor {
+            font-weight: 500;
+
             min-height: calc(var(--containerWidth) * 0.5625);
             max-height: ${preview
               ? `calc(var(--containerWidth) * 1.333333)`
@@ -54,6 +56,7 @@ console.log('CommandSTATE' , commandState)
             overflow: auto;
             padding: 0.5rem;
             font-size: ${fontSize}rem;
+            
           }
         `}
       </style>

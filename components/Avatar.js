@@ -11,14 +11,14 @@ function Avatar() {
             {`
             
             .avatar {
-                width: 2.5rem;
+                width: 2rem;
                 margin: 0 .5rem;
                 
             }
             img {
                 width: 100%;
                 border-radius: 50%;
-                border: 3px solid gold;
+                border: 0px solid gold;
             }
             `}
         </style>
