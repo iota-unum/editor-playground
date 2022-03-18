@@ -59,7 +59,7 @@ function Compose() {
           button {
             display: block;
             background-color: gold;
-            border: 3px solid gold;
+            border: 1px solid gold;
             border-radius: 1.5rem;
             margin: 1rem auto;
             color: steelblue;
