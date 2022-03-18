@@ -9,7 +9,9 @@ function Editor({ handleChange, content, overflow, progress, preview }) {
   const refEditor = useRef()
 
 useEffect(()=> {
+
   const el = document.querySelector('.editor');  
+  el.focus()
   positionCursorToEnd(el)
 
 }, [fontColor, selectedColor, preview])
