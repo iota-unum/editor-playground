@@ -1,37 +1,29 @@
 import ProgressBar from './ProgressBar';
 import useStore from '../store';
 function Editor({ handleChange, content, overflow, progress, preview }) {
-  const {fontSize, commandState, setCommandState } = useStore();
+  const { fontSize, commandState, setCommandState } = useStore();
 
+  function handleSelect() {
+    const selectState = {
+      bold: document.queryCommandState('bold'),
+      italic: document.queryCommandState('italic'),
+      heading: document.queryCommandValue('formatBlock') === 'h1',
+      text: document.queryCommandValue('formatBlock') === 'div',
+      center: document.queryCommandState('justifyCenter'),
+      left: document.queryCommandState('justifyLeft'),
+    };
+    console.log('bold', document.queryCommandState('bold'));
+    console.log('qmvl', document.queryCommandValue('formatBlock'));
+    setCommandState(selectState);
+    console.log('CommandSTATE', commandState);
+  }
 
-function handleSelect () {
+  function handlePaste(e) {
+    e.preventDefault();
+    const text = e.clipboardData.getData('text/plain');
+    document.execCommand('insertHTML', false, text);
+  }
 
-const selectState = {
-  bold: document.queryCommandState('bold'),
-  italic: document.queryCommandState('italic'),
-  heading: document.queryCommandValue('formatBlock' ) === 'h1',
-  text: document.queryCommandValue('formatBlock' ) === 'div',
-  center: document.queryCommandState('justifyCenter'),
-  left: document.queryCommandState('justifyLeft'),
-
-}
-console.log('bold',  document.queryCommandState('bold'))
-console.log('qmvl', document.queryCommandValue('formatBlock'))
-setCommandState(selectState)
-console.log('CommandSTATE' , commandState)
-}
-
-
-  // function handleSelect() {
-  //   const selectState = {};
-  //  ['bold', 'italic', 'formatBlock'].map((btn) => {
-  //     selectState[btn] = document.queryCommandState(btn);
-  //   });
-  //   // console.log('selectState', selectState);
-  //   setCommandState(selectState)
-  //   console.log('commandState', commandState)
-  //   return selectState;
-  // }
   return (
     <div
       className='editor'
@@ -40,6 +32,7 @@ console.log('CommandSTATE' , commandState)
       suppressContentEditableWarning={true}
       // value={content}
       onSelect={handleSelect}
+      onPaste={handlePaste}
     >
       {content === '' ? <div></div> : <div></div>}
 
@@ -56,7 +49,6 @@ console.log('CommandSTATE' , commandState)
             overflow: auto;
             padding: 0.5rem;
             font-size: ${fontSize}rem;
-            
           }
         `}
       </style>
