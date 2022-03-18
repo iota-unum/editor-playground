@@ -1,23 +1,19 @@
-import React, {useRef} from 'react'
+import React, { useRef } from 'react';
 
 function Toolbar() {
-
   return (
-    <div className='toolbar'>Toolbar
-    
-    
-    <style jsx>
+    <div className='toolbar'>
+      Toolbar
+      <style jsx>
         {`
-        .toolbar {
+          .toolbar {
             height: 50px;
-            background-color: steelblue;
-        }
-        
+            background-color: #15202b;
+          }
         `}
-    </style>
-    
+      </style>
     </div>
-  )
+  );
 }
 
-export default Toolbar
+export default Toolbar;

@@ -39,13 +39,13 @@ function Editor({ handleChange, content, overflow, progress, preview }) {
       <style jsx global>
         {`
           .editor {
-            font-weight: 500;
+            font-weight: 400;
 
             min-height: calc(var(--containerWidth) * 0.5625);
             max-height: ${preview
               ? `calc(var(--containerWidth) * 1.333333)`
               : `calc(var(--containerWidth) * 0.5625)`};
-            background-color: gold;
+            background-color: var(--selectedColor);
             overflow: auto;
             padding: 0.5rem;
             font-size: ${fontSize}rem;

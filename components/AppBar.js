@@ -19,11 +19,13 @@ function AppBar() {
             padding: 1rem 0.5rem;
           }
           button {
-            background-color: ${preview ? 'transparent' : 'gold'};
-            border: 2px solid gold;
+            background-color: ${preview
+              ? 'transparent'
+              : 'var(--selectedColor)'};
+            border: 2px solid var(--selectedColor);
             border-radius: 1.5rem;
             margin: 0 10px;
-            color:${preview ? 'gold' : 'steelblue'};
+            color: ${preview ? 'var(--selectedColor)' : '#15202b'};
             height: 2.1rem;
             padding: 0 2rem;
             font-weight: bolder;

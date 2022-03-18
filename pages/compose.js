@@ -46,12 +46,12 @@ function Compose() {
         content={content}
       />
       {!preview && <ProgressBar overflow={overflow} progress={progress} />}
-{!preview && <ColorBar/>}
+      {!preview && <ColorBar />}
       {preview && <button>Done</button>}
       <style jsx>
         {`
           .compose {
-            background-color: steelblue;
+            background-color: #15202b;
             height: 100%;
             min-height: 100vh;
             width: var(--containerWidth);
@@ -59,11 +59,11 @@ function Compose() {
           }
           button {
             display: block;
-            background-color: gold;
-            border: 1px solid gold;
+            background-color: var(--selectedColor);
+            border: 1px solid var(--selectedColor);
             border-radius: 1.5rem;
             margin: 1rem auto;
-            color: steelblue;
+            color: #15202b;
             width: 9rem;
             padding: 0.5rem 0.7rem;
             font-weight: bolder;
