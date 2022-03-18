@@ -6,6 +6,7 @@ import useDimensions from '../hooks/useDimensions';
 import useStore from '../store';
 import EditBar from '../components/EditBar';
 import Head from 'next/head';
+import ColorBar from '../components/ColorBar';
 
 function Compose() {
   const overflow = useStore((state) => state.overlfow);
@@ -45,7 +46,7 @@ function Compose() {
         content={content}
       />
       {!preview && <ProgressBar overflow={overflow} progress={progress} />}
-
+{!preview && <ColorBar/>}
       {preview && <button>Done</button>}
       <style jsx>
         {`
