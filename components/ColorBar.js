@@ -16,9 +16,9 @@ function ColorBar({}) {
   return (
     <div className='colorbar'>
      
-      <ColorGroup colors={fontColors} />
+      <ColorGroup colors={fontColors} target='font'/>
       <ColorGroup colors={[]} />
-      <ColorGroup colors={bgColors} />
+      <ColorGroup colors={bgColors} target='background'/>
 
       <style jsx>
         {`

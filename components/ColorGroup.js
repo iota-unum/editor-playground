@@ -1,10 +1,10 @@
 import React from 'react'
 import Selector from './Selector'
-function ColorGroup({colors}) {
+function ColorGroup({colors, target}) {
   return (
     <div className='color-group'>
 
-{colors.map(c => <Selector key={c} color={c} target='background'/>)}
+{colors.map(c => <Selector key={c} color={c} target={target}/>)}
 
 
 

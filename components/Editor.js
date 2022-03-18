@@ -1,7 +1,7 @@
 import ProgressBar from './ProgressBar';
 import useStore from '../store';
 function Editor({ handleChange, content, overflow, progress, preview }) {
-  const { fontSize, commandState, setCommandState } = useStore();
+  const { fontColor, fontSize, commandState, setCommandState } = useStore();
 
   function handleSelect() {
     const selectState = {
@@ -49,6 +49,7 @@ outline: none;
             overflow: auto;
             padding: 0.5rem;
             font-size: ${fontSize}rem;
+            color: ${fontColor};
           }
         `}
       </style>

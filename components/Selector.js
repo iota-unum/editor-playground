@@ -1,14 +1,23 @@
 import React from 'react'
 import useStore from '../store'
-function Selector({color}) {
+function Selector({color, target}) {
 const setSelectedColor = useStore(state => state.setSelectedColor)
+const setFontColor = useStore(state => state.setFontColor)
+const fontColor = useStore(state => state.fontColor)
+const selectedColor = useStore(state => state.selectedColor)
+    function handleClick(e){
+ e.preventDefault()
+if(target==='background') {
 
-    function handleClick(){
+    setSelectedColor(color)
 
-       setSelectedColor(color)
+}
+else if (target === 'font') {
+    setFontColor(color)
+}
     }
   return (
-    <div className='selector'
+    <div className='selector background font'
     
     onClick={handleClick}
     
@@ -26,6 +35,15 @@ const setSelectedColor = useStore(state => state.setSelectedColor)
             margin: 0.5rem;
             border-radius: 100%;
             
+            
+        }
+        .background {
+            border: ${color === selectedColor && '2px solid white'}
+
+        }
+        .font {
+            border: ${color === fontColor && `2px solid ${selectedColor}`}
+
         }
         
         `}
